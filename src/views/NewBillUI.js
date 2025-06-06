@@ -1,6 +1,13 @@
 import VerticalLayout from "./VerticalLayout.js";
+import ErrorPage from "./ErrorPage.js";
+import LoadingPage from "./LoadingPage.js";
 
-export default () => {
+export default ({ loading, error } = {}) => {
+  if (loading) {
+    return LoadingPage();
+  } else if (error) {
+    return ErrorPage(error);
+  }
   return `
     <div class='layout'>
       ${VerticalLayout(120)}

@@ -9,16 +9,20 @@ export default class NewBill {
     const formNewBill = this.document.querySelector(
       `form[data-testid="form-new-bill"]`
     );
-    formNewBill.addEventListener("submit", this.handleSubmit);
+    if (formNewBill) {
+      formNewBill.addEventListener("submit", this.handleSubmit);
+    }
     const file = this.document.querySelector(`input[data-testid="file"]`);
-    file.addEventListener("change", this.handleChangeFile);
+    if (file) {
+      file.addEventListener("change", this.handleChangeFile);
+    }
     this.fileUrl = null;
     this.fileName = null;
     this.billId = null;
     new Logout({ document, localStorage, onNavigate });
   }
   handleChangeFile = (e) => {
-    e.preventDefault();
+    console.log("Appel"), e.preventDefault();
     const file = this.document.querySelector(`input[data-testid="file"]`)
       .files[0];
     const filePath = e.target.value.split(/\\/g);
